@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>replit</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+ 
+  <div>
+    <b>
+ 1) HERE IS THE CODE IN C TO COUNT THE ODD AND EVEN NUMBERS FROM A USER-DEFINED ARRAY: 
+    </b>
+    <a>
+   #include stdio.h
+
+   int main() {
+       int size, i, oddCount = 0, evenCount = 0;
+
+       printf("Enter the size of the array: ");
+       scanf("%d", &size);
+
+       int arr[size];
+
+       printf("Enter %d elements in the array:\n", size);
+       for (i = 0; i < size; i++) {
+           scanf("%d", &arr[i]);
+
+           if (arr[i] % 2 == 0) {
+               evenCount++;
+           } else {
+               oddCount++;
+           }
+       }
+
+       printf("\nNumber of even numbers: %d\n", evenCount);
+       printf("Number of odd numbers: %d\n", oddCount);
+
+       return 0;
+   }
+    </a>
+  <b>
+
+2)HERE IS THE CODE IN C TO FIND THE MAXIMUM AND MINIMUM ELEMENTS FROM A USER-DEFINED ARRAY:</b>
+<a>
+         #include stdio.h
+
+         int main() {
+             int size, i;
+             int arr[100];
+             int max, min;
+
+             printf("Enter the size of the array: ");
+             scanf("%d", &size);
+
+             printf("Enter %d elements in the array:\n", size);
+             for (i = 0; i < size; i++) {
+                 scanf("%d", &arr[i]);
+             }
+
+             max = arr[0];
+             min = arr[0];
+
+             for (i = 1; i < size; i++) {
+                 if (arr[i] > max) {
+                     max = arr[i];
+                 }
+                 if (arr[i] < min) {
+                     min = arr[i];
+                 }
+             }
+
+             printf("\nMaximum element in the array: %d\n", max);
+             printf("Minimum element in the array: %d\n", min);
+
+             return 0;
+         }
+  </a>
+<b>Here is the code in C to search for an element in a user-defined array using linear search:</b>
+  #include <stdio.h>
+
+  int linearSearch(int arr[], int size, int key) {
+      for (int i = 0; i < size; i++) {
+          if (arr[i] == key) {
+              return i; // element found, return index
+          }
+      }
+      return -1; // element not found
+  }
+
+  int main() {
+      int size, i, key, result;
+      int arr[100];
+
+      printf("Enter the size of the array: ");
+      scanf("%d", &size);
+
+      printf("Enter %d elements in the array:\n", size);
+      for (i = 0; i < size; i++) {
+          scanf("%d", &arr[i]);
+      }
+
+      printf("Enter the element to search: ");
+      scanf("%d", &key);
+
+      result = linearSearch(arr, size, key);
+
+      if (result != -1) {
+          printf("%d found at index %d.\n", key, result);
+      } else {
+          printf("%d not found in the array.\n", key);
+      }
+
+      return 0;
+  }
+</a><b>Here is the code in C to insert an element into an array at a specified position:</b>
+           <a>#include <stdio.h>
+
+           void insertElement(int arr[], int *size, int element, int position) {
+               if (*size >= 100) {
+                   printf("Array is full. Cannot insert element.\n");
+                   return;
+               }
+
+               // Shift elements to the right to make space for the new element
+               for (int i = *size - 1; i >= position; i--) {
+                   arr[i + 1] = arr[i];
+               }
+
+               // Insert the new element at the specified position
+               arr[position] = element;
+               *size += 1;
+
+               printf("Element inserted successfully.\n");
+           }
+
+           int main() {
+               int size, element, position;
+               int arr[100];
+
+               printf("Enter the size of the array: ");
+               scanf("%d", &size);
+
+               printf("Enter %d elements in the array:\n", size);
+               for (int i = 0; i < size; i++) {
+                   scanf("%d", &arr[i]);
+               }
+
+               printf("Enter the element to insert: ");
+               scanf("%d", &element);
+
+               printf("Enter the position to insert the element: ");
+               scanf("%d", &position);
+
+               insertElement(arr, &size, element, position);
+
+               printf("Array after insertion:\n");
+               for (int i = 0; i < size; i++) {
+                   printf("%d ", arr[i]);
+               }
+
+               return 0;
+           }</a>       
+
+                 <b>Here is the code in C to delete an element from a user-defined array at a specified position:</b>
+                 <a>#include <stdio.h>
+
+                     void deleteElement(int arr[], int *size, int position) {
+                         if (*size == 0) {
+                             printf("Array is already empty. Cannot delete element.\n");
+                             return;
+                         }
+
+                         if (position < 0 || position >= *size) {
+                             printf("Invalid position to delete element.\n");
+                             return;
+                         }
+
+                         // Shift elements to the left to overwrite the deleted element
+                         for (int i = position; i < *size - 1; i++) {
+                             arr[i] = arr[i + 1];
+                         }
+
+                         *size -= 1;
+
+                         printf("Element at position %d deleted successfully.\n", position);
+                     }
+
+                     int main() {
+                         int size, position;
+                         int arr[100];
+
+                         printf("Enter the size of the array: ");
+                         scanf("%d", &size);
+
+                         if (size <= 0) {
+                             printf("Invalid array size.\n");
+                             return 1;
+                         }
+
+                         printf("Enter %d elements in the array:\n", size);
+                         for (int i = 0; i < size; i++) {
+                             scanf("%d", &arr[i]);
+                         }
+
+                         printf("Enter the position to delete the element: ");
+                         scanf("%d", &position);
+
+                         deleteElement(arr, &size, position);
+
+                         printf("Array after deletion:\n");
+                         for (int i = 0; i < size; i++) {
+                             printf("%d ", arr[i]);
+                         }
+
+                         return 0;
+                     }</a>
+                           <b>Here is the code in C to find the transpose of a matrix:</b>
+<a>#include <stdio.h>
+
+#define MAX_SIZE 10
+
+void transposeMatrix(int matrix[MAX_SIZE][MAX_SIZE], int rows, int columns) {
+    int transpose[MAX_SIZE][MAX_SIZE];
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            transpose[j][i] = matrix[i][j];
+        }
+    }
+
+    printf("Transpose of the matrix:\n");
+    for (int i = 0; i < columns; i++) {
+        for (int j = 0; j < rows; j++) {
+            printf("%d\t", transpose[i][j]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    int matrix[MAX_SIZE][MAX_SIZE];
+    int rows, columns;
+
+    printf("Enter the number of rows of the matrix: ");
+    scanf("%d", &rows);
+
+    printf("Enter the number of columns of the matrix: ");
+    scanf("%d", &columns);
+
+    printf("Enter the elements of the matrix:\n");
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < columns; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
+
+    transposeMatrix(matrix, rows, columns);
+
+    return 0;
+}</a>        <b>fibonaci series using recursion</b><a>#include <stdio.h>
+
+int fibonacci(int n) {
+    if (n <= 1) {
+        return n;
+    }
+    return fibonacci(n - 1) + fibonacci(n - 2);
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of terms for Fibonacci series: ");
+    scanf("%d", &n);
+
+    printf("Fibonacci series up to %d terms:\n", n);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", fibonacci(i));
+    }
+
+    return 0;
+}</a>          <b>write a c program to finfd the graeatest comon divisor of the two numbers using recursion</b><a>#include <stdio.h>
+
+int gcd(int num1, int num2) {
+    if (num2 != 0) {
+        return gcd(num2, num1 % num2);
+    } else {
+        return num1;
+    }
+}
+
+int main() {
+    int num1, num2;
+
+    printf("Enter the first number: ");
+    scanf("%d", &num1);
+
+    printf("Enter the second number: ");
+    scanf("%d", &num2);
+
+    printf("Greatest Common Divisor (GCD) of %d and %d is: %d\n", num1, num2, gcd(num1, num2));
+
+    return 0;
+}</a> <b>write a c program to finfd the sequeses of moves involved in the tower of hanoi using recursion</b>
+<a>#include <stdio.h>
+
+void towerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) {
+    if (n == 1) {
+        printf("Move disk 1 from rod %c to rod %c\n", from_rod, to_rod);
+        return;
+    }
+    towerOfHanoi(n - 1, from_rod, aux_rod, to_rod);
+    printf("Move disk %d from rod %c to rod %c\n", n, from_rod, to_rod);
+    towerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
+}
+
+int main() {
+    int n;
+
+    printf("Enter the number of disks: ");
+    scanf("%d", &n);
+
+    printf("Sequence of moves in Tower of Hanoi with %d disks:\n", n);
+    towerOfHanoi(n, 'A', 'C', 'B');
+
+    return 0;
+}</a>     <b>write a c program to find the ackermann function using recursion
+
+</b><a>#include <stdio.h>
+
+int ackermann(int m, int n) {
+    if (m == 0) {
+        return n + 1;
+    } else if (n == 0) {
+        return ackermann(m - 1, 1);
+    } else {
+        return ackermann(m - 1, ackermann(m, n - 1));
+    }
+}
+
+int main() {
+    int m, n;
+
+    printf("Enter the values of m and n for Ackermann function: ");
+    scanf("%d %d", &m, &n);
+
+    printf("Ackermann(%d, %d) = %d\n", m, n, ackermann(m, n));
+
+    return 0;
+}</a>              </div>
+                 </body>
+  <script src="script.js"></script>
+</body>
+
+</html>
